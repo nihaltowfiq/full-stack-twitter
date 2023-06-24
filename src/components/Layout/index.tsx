@@ -1,5 +1,5 @@
+import { FollowBar, Sidebar } from '@components/Includes';
 import { FC, ReactNode } from 'react';
-import { Sidebar } from '../Includes/Sidebar';
 
 export const Layout: FC<PropsType> = ({ children }) => {
 	return (
@@ -8,6 +8,7 @@ export const Layout: FC<PropsType> = ({ children }) => {
 				<div className="grid grid-cols-4 h-full">
 					<Sidebar />
 					<div className="col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">{children}</div>
+					<FollowBar />
 				</div>
 			</div>
 		</section>
