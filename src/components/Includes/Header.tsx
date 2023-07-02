@@ -16,7 +16,7 @@ export const Header: FC<PropsType> = ({ label, showBackArrow }) => {
 					<BiArrowBack
 						onClick={handleBack}
 						color="white"
-						className="cursor-pointer hover:opacity-70 transition"
+						className="cursor-pointer hover:opacity-70 transition mt-1"
 					/>
 				)}
 				<h1 className="text-white text-xl font-semibold">{label}</h1>

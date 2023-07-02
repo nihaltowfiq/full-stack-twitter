@@ -1,10 +1,11 @@
-export const Button: React.FC<PropsType> = (props) => {
-	const { label, secondary, fullWidth, onClick, large, disabled, outline } = props;
+import { FC, HTMLAttributes } from 'react';
+
+export const Button: FC<PropsType> = (props) => {
+	const { label, secondary, fullWidth, large, outline, ...rest } = props;
 
 	return (
 		<button
-			disabled={disabled}
-			onClick={onClick}
+			{...rest}
 			className={`
                 disabled:opacity-70
                 disabled:cursor-not-allowed
@@ -30,12 +31,11 @@ export const Button: React.FC<PropsType> = (props) => {
 	);
 };
 
-interface PropsType {
+interface PropsType extends HTMLAttributes<HTMLButtonElement> {
 	label: string;
 	secondary?: boolean;
 	fullWidth?: boolean;
 	large?: boolean;
-	onClick: () => void;
-	disabled?: boolean;
 	outline?: boolean;
+	disabled?: boolean;
 }
