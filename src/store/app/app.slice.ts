@@ -5,8 +5,9 @@ const initialState: IInitialState = {
 	isLoading: false,
 	isAuthenticate: false,
 	popup: {
-		isActive: false,
-		type: null,
+		isActive: true,
+		isLoading: false,
+		type: 'register',
 	},
 };
 
@@ -33,6 +34,7 @@ export const getAppState = (state: RootState): IInitialState => state.app;
 type IPopup = {
 	isActive: boolean;
 	type: 'register' | 'signin' | 'forgot-password';
+	isLoading?: boolean;
 };
 
 interface IInitialState {

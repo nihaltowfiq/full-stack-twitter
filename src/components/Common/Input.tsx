@@ -1,15 +1,12 @@
-import { ChangeEvent, FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 
-export const Input: FC<PropsType> = ({ placeholder, value, type = 'text', onChange, disabled, label }) => {
+export const Input: FC<PropsType> = ({ disabled, label, ...rest }) => {
 	return (
 		<div className="w-full">
 			{label && <p className="text-xl text-white font-semibold mb-2">{label}</p>}
 			<input
 				disabled={disabled}
-				onChange={onChange}
-				value={value}
-				placeholder={placeholder}
-				type={type}
+				{...rest}
 				className="
                     w-full
                     p-4 
@@ -32,11 +29,7 @@ export const Input: FC<PropsType> = ({ placeholder, value, type = 'text', onChan
 	);
 };
 
-interface PropsType {
-	placeholder?: string;
-	value?: string;
-	type?: string;
+interface PropsType extends HTMLAttributes<HTMLInputElement> {
 	disabled?: boolean;
-	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 	label?: string;
 }

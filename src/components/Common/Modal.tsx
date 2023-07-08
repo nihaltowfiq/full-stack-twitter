@@ -1,9 +1,9 @@
-import { FC, ReactElement, useCallback } from 'react';
+import { FC, PropsWithChildren, ReactElement, useCallback } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { Button } from './Button';
 
 export const Modal: FC<PropsType> = (props) => {
-	const { isOpen, onClose, onSubmit, title, body, actionLabel, footer, disabled } = props;
+	const { isOpen, onClose, title, children, actionLabel, onSubmit, footer, disabled } = props;
 
 	const handleClose = useCallback(() => {
 		if (disabled) {
@@ -86,18 +86,23 @@ export const Modal: FC<PropsType> = (props) => {
 								<AiOutlineClose size={20} />
 							</button>
 						</div>
+
 						{/*body*/}
-						<div className="relative p-10 flex-auto">{body}</div>
+						<div className="relative p-10 flex-auto">{children}</div>
+
 						{/*footer*/}
 						<div className="flex flex-col gap-2 p-10">
-							<Button
-								disabled={disabled}
-								label={actionLabel}
-								secondary
-								fullWidth
-								large
-								onClick={handleSubmit}
-							/>
+							{actionLabel && onSubmit && (
+								<Button
+									disabled={disabled}
+									label={actionLabel}
+									secondary
+									fullWidth
+									large
+									onClick={handleSubmit}
+								/>
+							)}
+
 							{footer}
 						</div>
 					</div>
@@ -107,13 +112,12 @@ export const Modal: FC<PropsType> = (props) => {
 	);
 };
 
-interface PropsType {
+interface PropsType extends PropsWithChildren {
 	isOpen?: boolean;
 	onClose: () => void;
-	onSubmit: () => void;
+	onSubmit?: () => void;
 	title?: string;
-	body?: ReactElement;
 	footer?: ReactElement;
-	actionLabel: string;
+	actionLabel?: string;
 	disabled?: boolean;
 }
