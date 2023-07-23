@@ -24,10 +24,10 @@ export const AuthPopup: FC = () => {
 				<span
 					onClick={onToggle}
 					className="
-            text-white 
-            cursor-pointer 
-            hover:underline
-          "
+						text-white 
+						cursor-pointer 
+						hover:underline
+          			"
 				>
 					{popup?.type === 'register' ? 'Sign in' : 'Create an account'}
 				</span>
@@ -40,8 +40,8 @@ export const AuthPopup: FC = () => {
 			footer={footerContent}
 			disabled={isLoading}
 			isOpen={popup.isActive}
-			onClose={() => dispatch(updatePopup({ isActive: false, type: null }))}
 			title={popup?.type === 'register' ? 'Register' : 'Sign In'}
+			onClose={() => dispatch(updatePopup({ isActive: false, type: null }))}
 		>
 			{popup?.type === 'register' ? <Register /> : <SignIn />}
 		</Modal>
